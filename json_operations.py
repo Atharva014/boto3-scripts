@@ -18,7 +18,7 @@ def load_data(filepath):
 
 def save_json_data(filepath, data):
     stringified_json_data = json.dumps(data)
-    f = open(filepath, 'w')
-    f.write(stringified_json_data)
-    f.close
+    with open(filepath, 'w') as f:
+        f.write(stringified_json_data)
+        
     return True
