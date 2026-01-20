@@ -17,7 +17,7 @@ def load_data(filepath):
     
 
 def save_json_data(filepath, data):
-    stringified_json_data = json.dumps(data)
+    stringified_json_data = json.dumps(data, indent=4)
     with open(filepath, 'w') as f:
         f.write(stringified_json_data)
         

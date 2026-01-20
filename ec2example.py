@@ -30,8 +30,18 @@ def create_instance():
     else:
          ec2_data["ec2_instance_ids"] = [instance_id]
 
+    if json_operations.save_json_data(ec2_data_path, ec2_data):
+        print("File updated")
+
+
 def read_instance_ip():
-    reservations = ec2_client.describe_instances(InstanceIds = [""]).get("Reservations")
+
+    instances_ids = ec2_data.get("ec2_instance_ids", [])
+    if not instances_ids:
+        print("No instance IDs found in data file")
+        return
+
+    reservations = ec2_client.describe_instances(InstanceIds = instances_ids).get("Reservations")
 
     for reservation in reservations:
         for instance in reservation['Instances']:
@@ -40,6 +50,4 @@ def read_instance_ip():
 
 if __name__ == "__main__":
     create_instance()
-
-    if json_operations.save_json_data(ec2_data_path, ec2_data):
-        print("File updated")
+    #read_instance_ip()
