@@ -1,0 +1,6 @@
+{
+    "region_name": "ap-south-1",
+    "ami_id": "ami-0ced6a024bb18ff2e",
+    "instance_type": "t3.micro",
+    "key_name": "linux-key"
+}
