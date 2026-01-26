@@ -55,6 +55,24 @@ def upload_file(file_path, bucket_name, object_name=None):
     print("file uploaded")
     return True
 
+# delete object from bucket
+def delete_object(object_name, bucket_name, region=None):
+    try:
+        if region is None:
+            region = "ap-south-1"
+
+        s3_client = boto3.client('s3', region_name = region)
+        response = s3_client.delete_object(
+            Bucket = bucket_name,
+            Key = object_name
+        )
+        print(response)
+
+    except ClientError as e:
+        logging.error(e)
+        return False
+
+
 # delete empty bucket
 def delete_empty_bucket(bucket_name, region=None):
     if region is None:
@@ -80,8 +98,10 @@ if __name__ == "__main__":
 
     #list_buckets(region)
 
-    #pload_file("./data/ec2data.json", bucket_name)
+    #upload_file("./data/ec2data.json", bucket_name)
 
-    #delete_empty_bucket(bucket_name, region)
+    delete_empty_bucket(bucket_name, region)
 
     #delete_non_empty_bucket(bucket_name)
+
+    #delete_object('ec2data.json', bucket_name, region)
