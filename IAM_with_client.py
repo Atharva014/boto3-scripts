@@ -186,7 +186,7 @@ if __name__ == "__main__":
     list_users()
     #delete_user("sam")
     #create_policy("sam_ec2_full_access", "./data/ec2_access_policy.json")
-    delete_policy("sam_ec2_full_access")
+    #delete_policy("sam_ec2_full_access")
     #attach_cutsom_poilicy_to_user("sam_ec2_full_access", "sam")
     #detach_cutsom_poilicy_to_user("sam_ec2_full_access", "sam")
     #attach_managed_poilicy_to_user("AdministratorAccess", "sam")
